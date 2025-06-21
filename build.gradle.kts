@@ -12,7 +12,7 @@ plugins {
 // Read env vars (used for publishing generally)
 version = System.getenv("MINESTOM_VERSION") ?: "dev"
 val channel = System.getenv("MINESTOM_CHANNEL") ?: "local" // local, snapshot, release
-val javaVersion = System.getenv("JAVA_VERSION") ?: "21"
+val javaVersion = System.getenv("JAVA_VERSION") ?: "23"
 
 val shortDescription = "1.21 Lightweight Minecraft server"
 
@@ -141,7 +141,7 @@ tasks {
     publishing.publications.create<MavenPublication>("maven") {
         groupId = "net.minestom"
         // todo: decide on publishing scheme
-        artifactId = if (channel == "snapshot") "minestom-snapshots" else "minestom-snapshots"
+        artifactId = "minestom-skyblock"
         version = project.version.toString()
 
         from(project.components["java"])
@@ -197,4 +197,23 @@ tasks {
 
         sign(publishing.publications)
     }
+}
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") { // Use create<Type>("name") for publication definition
+            from(components.getByName("java")) // Use getByName for components
+            // You can customize artifactId if needed, but it should match your project's artifactId
+            // artifactId = "minestom-snapshots" // This should be picked up automatically
+        }
+    }
+    repositories {
+        mavenLocal() // This publishes to your local .m2 repository
+    }
+}
+
+// Optional: To ensure it's built and installed locally with a single command
+tasks.register("publishToMavenLocalAndBuild") {
+    dependsOn("publishToMavenLocal") // Use dependsOn() with string for task names
+    // Add any other tasks needed, like "build" if it's not a direct dependency
+    // For example: dependsOn("build", "publishToMavenLocal")
 }

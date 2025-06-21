@@ -51,8 +51,8 @@ import java.net.SocketAddress;
  * You should register all of your dimensions, biomes, commands, events, etc... in-between.
  */
 public final class MinecraftServer implements MinecraftConstants {
-
-    public static final ComponentLogger LOGGER = ComponentLogger.logger(MinecraftServer.class);
+    public static LoggerProvider LoggerProvider = ComponentLogger::logger;
+    public static ComponentLogger LOGGER = LoggerProvider.getLogger(MinecraftServer.class);
 
     // Threads
     public static final String THREAD_NAME_BENCHMARK = "Ms-Benchmark";

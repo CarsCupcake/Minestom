@@ -53,7 +53,6 @@ import net.minestom.server.world.DimensionType;
 import net.minestom.server.world.biome.Biome;
 import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.net.SocketAddress;
@@ -63,7 +62,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 final class ServerProcessImpl implements ServerProcess {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ServerProcessImpl.class);
+    private static final Logger LOGGER = MinecraftServer.LoggerProvider.getLogger(ServerProcessImpl.class);
 
     private final ExceptionManager exception;
 
