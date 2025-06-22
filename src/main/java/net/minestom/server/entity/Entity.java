@@ -182,6 +182,11 @@ public class Entity implements Viewable, Tickable, Schedulable, Snapshotable, Ev
 
     private final Acquirable<Entity> acquirable = Acquirable.of(this);
 
+    /**
+     * If Entity#spawn() should be automatically be called
+     */
+    protected boolean callSpawn = true;
+
     public Entity(@NotNull EntityType entityType, @NotNull UUID uuid) {
         this.id = generateId();
         this.entityType = entityType;
@@ -841,7 +846,8 @@ public class Entity implements Viewable, Tickable, Schedulable, Snapshotable, Ev
                     player.sendPackets(instance.getWeather().createWeatherPackets());
                 }
                 instance.getEntityTracker().register(this, spawnPosition, trackingTarget, trackingUpdate);
-                spawn();
+                if (callSpawn)
+                    spawn();
                 EventDispatcher.call(new EntitySpawnEvent(this, instance));
             } catch (Exception e) {
                 MinecraftServer.getExceptionManager().handleException(e);

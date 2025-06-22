@@ -195,4 +195,8 @@ public record BlockVec(double x, double y, double z) implements Point {
     public @NotNull Vec asVec() {
         return new Vec(x, y, z);
     }
+
+    public Point middle() {
+        return add(0.5, 0.5, 0.5);
+    }
 }
