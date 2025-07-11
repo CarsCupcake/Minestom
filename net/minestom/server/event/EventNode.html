@@ -195,7 +195,7 @@ H&gt;<br>@NotNull <a href="EventNode.html" title="interface in net.minestom.serv
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
 <div class="block">Maps a specific object to a node.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>@NotNull <a href="EventNode.html" title="interface in net.minestom.server.event">EventNode</a><wbr>&lt;<a href="EventNode.html" title="type parameter in EventNode">T</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#register(net.minestom.server.event.EventBinding)" class="member-name-link">register</a><wbr>(@NotNull <a href="EventBinding.html" title="interface in net.minestom.server.event">EventBinding</a>&lt;? extends <a href="EventNode.html" title="type parameter in EventNode">T</a>&gt;&nbsp;binding)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>@NotNull <a href="EventNode.html" title="interface in net.minestom.server.event">EventNode</a><wbr>&lt;<a href="EventNode.html" title="type parameter in EventNode">T</a>&gt;</code></div>
@@ -820,7 +820,9 @@ H&gt;</span>&nbsp;<span class="return-type">@NotNull <a href="EventNode.html" ti
 <section class="detail" id="register(net.minestom.server.event.EventBinding)">
 <h3>register</h3>
 <div class="member-signature"><span class="annotations">@Experimental
-</span><span class="return-type">void</span>&nbsp;<span class="element-name">register</span><wbr><span class="parameters">(@NotNull
+@Contract("_ -&gt; this")
+@NotNull
+</span><span class="return-type">@NotNull <a href="EventNode.html" title="interface in net.minestom.server.event">EventNode</a>&lt;<a href="EventNode.html" title="type parameter in EventNode">T</a>&gt;</span>&nbsp;<span class="element-name">register</span><wbr><span class="parameters">(@NotNull
  @NotNull <a href="EventBinding.html" title="interface in net.minestom.server.event">EventBinding</a>&lt;? extends <a href="EventNode.html" title="type parameter in EventNode">T</a>&gt;&nbsp;binding)</span></div>
 </section>
 </li>
