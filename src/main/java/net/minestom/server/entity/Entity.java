@@ -13,6 +13,7 @@ import net.kyori.adventure.text.event.HoverEventSource;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.minestom.server.*;
 import net.minestom.server.collision.*;
+import net.minestom.server.color.TeamColor;
 import net.minestom.server.component.DataComponent;
 import net.minestom.server.component.DataComponents;
 import net.minestom.server.coordinate.CoordConversion;
@@ -1249,13 +1250,14 @@ public class Entity implements Viewable, Tickable, Schedulable, Snapshotable, Ev
         this.entityMeta.setHasGlowingEffect(glowing);
     }
 
+    @Nullable
     private Team colorTeam = null;
 
     /**
      * Setups teams for the glow color
      * @param rgbLike the color
      */
-    public void setGlowColor(NamedTextColor rgbLike) {
+    public void setGlowColor(TeamColor rgbLike) {
         colorTeam = new TeamBuilder(getUuid().toString(), new TeamManager()).teamColor(rgbLike).build();
         if (instance != null && !isRemoved()) {
             colorTeam.addMember(getUuid().toString());

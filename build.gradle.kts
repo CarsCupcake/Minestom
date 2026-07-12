@@ -2,7 +2,6 @@ plugins {
     id("minestom.java-library")
     id("minestom.publishing")
     alias(libs.plugins.blossom)
-
     alias(libs.plugins.nmcp.aggregation)
     alias(libs.plugins.graalvm.native)
 }
